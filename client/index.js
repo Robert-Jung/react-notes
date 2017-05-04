@@ -6,12 +6,13 @@ const Note = require('./note')
 function App(props) {
   console.log(props)
   return(
-    <ul>
-      {
-        props.notes.map((note, i) => {
-          return <Note key={ i } text={ note }/>
-        })
-      }
+    <ul className='collection with-header'>
+      <li class='collection-header'><h3>React Notes</h3></li>
+        {
+          props.notes.map((note, i) => {
+            return <Note key={ i } text={ note }/>
+          })
+        }
     </ul>
   )
 }

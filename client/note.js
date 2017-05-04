@@ -2,9 +2,9 @@ const React = require('react')
 
 const Note = props => {
   return (
-    <ul>
+    <li className='collection-item'>
       <span>{ props.text }</span>
-    </ul>
+    </li>
   )
 }
 
