@@ -1,14 +1,11 @@
 const Redux = require('redux')
 
-const initialState = [
-  'Reminder: Read react - JSX in Depth',
-  'Reminder: Read react - conditional rendering'
-]
-
-const notes = function noteList(state = initialState, action) {
+const notes = function noteList(state = [], action) {
   switch(action.type) {
     case 'NOTE_CREATED':
       return [...state, action.text]
+    case 'NOTES_LOADED':
+      return action.notes
     default:
       return state
   }

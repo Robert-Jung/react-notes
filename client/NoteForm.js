@@ -8,13 +8,22 @@ const NoteForm = props => {
       type: 'INPUT_CHANGED',
       text: event.target.value
     })
-}
+  }
   function handleSubmit(event) {
     event.preventDefault()
-    const { noteInput } = store.getState()
-    store.dispatch({
-      type: 'NOTE_CREATED',
-      text: noteInput
+    const state = store.getState()
+    const note = { note: state.noteInput }
+    fetch('/notes', {
+      method: 'POST',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify(note)
+    }).then((res) => {
+        return res.json()
+    }).then((data) => {
+      store.dispatch({
+        type: 'NOTE_CREATED',
+        text: data.note
+      })
     })
   }
   return (
